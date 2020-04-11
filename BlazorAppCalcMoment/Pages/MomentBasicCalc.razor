@@ -1,0 +1,52 @@
+﻿@page "/MomentBasicCalc"
+
+<h3>Client Side - Moment Basic Calc wint Blazor an CSharp</h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <label for="weight">Weights</label>
+            <input type="text" class="form-control" id="weight"
+                   value="@Weight"
+                       @onchange="SetWeight"  />
+        </div>
+        <div class="col-sm">
+            <label for="CG">CG</label>
+            <input type="text" class="form-control" id="CG"
+                   value=@Cg
+                   @onchange="SetCG" />
+        </div>
+        <div class="col-sm">
+            <label for="Moment">Moment</label>
+            <input type="text" class="form-control" id="Moment" value=@Moment readonly />
+        </div>
+    </div>
+</div>
+
+
+
+@code {
+    public double Weight { get; set; }
+    public double Cg { get; set; }
+    public double Moment { get; set; }
+
+    void SetWeight(ChangeEventArgs e)
+    {
+        Weight = Convert.ToDouble(e.Value);
+        
+        Calc();
+    }
+
+    void SetCG(ChangeEventArgs e)
+    {
+        Cg = Convert.ToDouble( e.Value);
+        Calc();
+    }
+
+    void Calc()
+    {
+
+        Moment = Weight * Cg;
+
+    }
+}
